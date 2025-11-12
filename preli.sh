@@ -14,7 +14,6 @@ echo "VScode Uninstalled"
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
 echo 'deb https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
 sudo apt update && sudo apt install codium
-
 echo "VScodium Installed"
 
 # Reset UFW
@@ -39,10 +38,18 @@ sudo ufw deny out from any to 160.79.104.10
 
 # Enable UFW
 sudo ufw enable
-
 echo "Chatbots are blocked"
 
-# Change password
+# Change admin_pc password
 sudo usermod -p '$1$Np8w3vqp$RfW9woGUN.K6yl2cNOYVi0' admin_pc
+
+# Clear mcc user
+sudo chattr -i -R /home/mcc/.*
+sudo rm -rf /home/mcc
+sudo mkdir /home/mcc
+sudo chown mcc:mcc /home/mcc
+sudo chmod 755 /home/mcc
+sudo cp -r /etc/skel/. /home/mcc/
+sudo chown -R mcc:mcc /home/mcc
 
 echo "DONE"
