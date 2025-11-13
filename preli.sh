@@ -5,7 +5,7 @@ set -eu
 echo "y" | sudo apt update 
 
 # Uninstall VScode
-sudo apt remove --purge code && \
+sudo apt remove --purge code -y && \
 sudo rm -f /etc/apt/sources.list.d/vscode.list /etc/apt/keyrings/packages.microsoft.gpg && \
 sudo apt autoremove && sudo apt autoclean && sudo apt update && \
 echo "VScode Uninstalled"
@@ -35,6 +35,11 @@ sudo ufw deny out from any to 74.125.200.101
 sudo ufw deny out from any to 74.125.200.102
 sudo ufw deny out from any to 74.125.200.113
 sudo ufw deny out from any to 160.79.104.10
+sudo ufw deny out from any to 76.76.21.21
+sudo ufw deny out from any to 96.17.180.48
+sudo ufw deny out from any to 96.17.180.42
+sudo ufw deny out from any to 104.18.28.234
+sudo ufw deny out from any to 104.18.29.234
 
 # Enable UFW
 sudo ufw enable
