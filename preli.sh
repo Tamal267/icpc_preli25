@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eu
-
 echo "y" | sudo apt update 
 
 # Uninstall VScode
@@ -45,8 +43,9 @@ sudo ufw deny out from any to 104.18.29.234
 sudo ufw enable
 echo "Chatbots are blocked"
 
-# Change admin_pc password
+# Change passwords
 sudo usermod -p '$1$Np8w3vqp$RfW9woGUN.K6yl2cNOYVi0' admin_pc
+sudo usermod -p '$1$acJhiK.Q$xqyWSY4UR9J3cEqvTIX4q1' mcc
 
 # Clear mcc user
 sudo chattr -i -R /home/mcc/.*
